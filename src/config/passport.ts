@@ -2,46 +2,44 @@ import passportLocal from 'passport-local';
 import passport from 'passport';
 import { Request, Response, NextFunction } from 'express';
 import User from '../database/models/user.model';
+import { comparePassword } from '../modules/bcrypt';
 
 const LocalStrategy = passportLocal.Strategy;
 
-
 passport.use(
-     new LocalStrategy(
-          {
-               usernameField: 'username',
-               passwordField: 'password',
-          },
-          async (username, password, done) => {
-               try {
-                    // check if user exists
-                    const userExists = await User.findOne({ username: username });
-                    if (userExists) {
-                         return done(null, false);
-                    }
-                    // Create a new user with the user data provided
-                    const user = await User.create({ username, password });
-                    return done(null, user);
-               } catch (error) {
-                    done(error);
-               }
+     new LocalStrategy({
+          usernameField: 'username',
+          passwordField: 'password'
+     }, async (username, password, done) => {
+          const user = await User.findOne({ username });
+
+          if (user && (await comparePassword(password, user.password))) {
+               return done(null, user);
+          } else {
+               return done(null, false);
           }
-     )
-)
 
+     }
+  )
+);
 
-export const isAuthenticated = (
-     req: Request,
-     res: Response,
-     next: NextFunction
-): void => {
+export const isAuthenticated = (req: Request, res: Response, next: NextFunction): void => {
      if (req.isAuthenticated()) {
           return next();
      }
-     res.redirect('/signin');
+     res.redirect('/login');
 };
 
-/**
- * Authorization Required middleware.
- */
+passport.serializeUser((user, done) => {
+     done(null, user);
+});
 
+passport.deserializeUser(async (id, done) => {
+     try {
+          const user = await User.findById(id);
+          done(null, user);
+
+     } catch (err) {
+          done(err);
+     }
+});

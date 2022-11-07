@@ -14,7 +14,7 @@ export const signIn = async (req: Request, res: Response): Promise<void> => {
           if (!compare) {
                res.status(400).json({ message: "Wrong password"});
           }
-          res.render('users'); // TODO redirect users when will be session
+          res.redirect('/users'); // TODO redirect users when will be session
      } catch (err) {
           console.log(err); // TODO json send error
      }

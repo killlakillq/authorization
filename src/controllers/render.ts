@@ -1,22 +1,27 @@
 import { Request, Response } from 'express';
-import User from '../database/models/user.model';
-// import { } from '../modules/signin';
+import passport from 'passport';
 
-export const auth = (req: Request, res: Response): void => {
+export const registration = (req: Request, res: Response): void => {
      res.render('index', {
-          index: '/signin'
-      });
+          index: '/registration',
+     });
 };
 
-export const reg = (req: Request, res: Response): void => {
+export const login = (req: Request, res: Response): void => {
      res.render('index', {
-          index: '/signup'
-      });
+          index: '/login',
+     });
 };
 
 export const users = (req: Request, res: Response): void => {
      res.render('users', {
-          users: '/users'
-      });
+          users: '/users',
+     });
 };
 
+export const auth = (): void => {
+     passport.authenticate('local', { failureRedirect: '/login' }),
+          (req: Request, res: Response) => {
+               res.render('users');
+          };
+};
