@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import 'ejs';
 import path from 'node:path';
 import router from './routes/routers';
-import session from 'express-session';
 import passport from 'passport';
 import mongoose from 'mongoose';
 
@@ -21,14 +20,13 @@ app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'ejs');
 // init passport on every route call.
 app.use(passport.initialize());
-// coockie
-app.use(passport.session());
-app.use(session({
-     secret: process.env.SECRET!,
-     resave: false,
-     saveUninitialized: true,
-     cookie: { secure: true, maxAge: 1000 * 60 * 60 * 24 }
-   }))
+// app.use(passport.session());
+// app.use(session({
+//      secret: process.env.SECRET!,
+//      resave: false,
+//      saveUninitialized: true,
+//      cookie: { secure: true, maxAge: 1000 * 60 * 60 * 24 }
+//    }))
 
 app.use('/', router);
 
