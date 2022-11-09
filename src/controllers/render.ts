@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 
 export const registration = (req: Request, res: Response): void => {
@@ -20,8 +20,12 @@ export const users = (req: Request, res: Response): void => {
 };
 
 export const auth = (): void => {
-     passport.authenticate('local', { failureRedirect: '/login' }),
-          (req: Request, res: Response) => {
-               res.render('users');
-          };
+     
 };
+
+export const session = (req: Request, res: Response, next: NextFunction): void => {
+     console.log(req.session);
+     console.log(req.user);
+     next();
+     
+}

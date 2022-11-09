@@ -1,20 +1,22 @@
-// import session from "express-session"
-// import mongoose from "mongoose";
-// import "dotenv/config";
-// const MongoDBStore = require('connect-mongodb-session')(session);
+import session from "express-session";
+import "dotenv/config";
+const MongoDBStore = require('connect-mongodb-session')(session);
 
-// const uri = process.env.MONGO_URI!;
+const uri = process.env.MONGO_URI!;
+const sessionStore = new MongoDBStore({
+     uri: uri,
+     collection: 'sessions'
+});
 
-// const connection = mongoose.connect(uri);
-// const sessionStore = new MongoDBStore({
-//      MongooseConnection: connection,
-//      collection: 'users'
-// });
+// Catch errors
+sessionStore.on('error', function(error: Error): void {
+     console.log(error);
+});
 
-// export const sessionConfig = {
-//      secret: 'keyboard key',
-//      cookie: { maxAge: 86400000, secure: true },
-//      resave: false,
-//      saveUninitialized: false,
-//      store: sessionStore
-// }
+export const sessionConfig = {
+     secret: 'keyboard key',
+     cookie: { maxAge: 86400000 },
+     resave: false,
+     saveUninitialized: true,
+     store: sessionStore
+}

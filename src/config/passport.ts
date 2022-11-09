@@ -7,39 +7,42 @@ import { comparePassword } from '../modules/bcrypt';
 const LocalStrategy = passportLocal.Strategy;
 
 passport.use(
-     new LocalStrategy({
-          usernameField: 'username',
-          passwordField: 'password'
-     }, async (username, password, done) => {
-          const user = await User.findOne({ username });
+     new LocalStrategy(
+          {
+               usernameField: 'username',
+               passwordField: 'password',
+          },
+          async (username, password, done) => {
+               const user = await User.findOne({ username: username });
 
-          if (user && (await comparePassword(password, user.password))) {
-               return done(null, user);
-          } else {
-               return done(null, false);
+               if (user && (await comparePassword(password, user.password))) {
+                    return done(null, user);
+               } else {
+                    return done(null, false);
+               }
           }
-
-     }
-  )
+     )
 );
 
-export const isAuthenticated = (req: Request, res: Response, next: NextFunction): void => {
-     if (req.isAuthenticated()) {
-          return next();
+export const isAuthenticated = (
+     req: Request,
+     res: Response,
+     next: NextFunction
+) => {
+     if (!req.isAuthenticated()) {
+          res.redirect('/login');
      }
-     res.redirect('/login');
+     next();
 };
 
-passport.serializeUser((user, done) => {
-     done(null, user);
+passport.serializeUser((user: any, done) => {
+     done(null, user.id);
 });
 
 passport.deserializeUser(async (id, done) => {
-     try {
-          const user = await User.findById(id);
-          done(null, user);
-
-     } catch (err) {
-          done(err);
-     }
+     await User.findById(id)
+          .then((user) => {
+               done(null, user);
+          })
+          .catch((err) => done(err));
 });

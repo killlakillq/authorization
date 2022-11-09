@@ -3,20 +3,24 @@ import passport from 'passport';
 import User from '../database/models/user.model';
 import { comparePassword } from './bcrypt';
 
-export const signIn = async (req: Request, res: Response): Promise<void> => {
+export const signIn = async (req: Request, res: Response) => {
      const { username, password } = req.body;
+
+     if (!username || !password) {
+          return res.status(400).json({ message: "Please filled the field correctly" });
+     }
      try {
-          const user = await User.findOne({ username });
+          const user = await User.findOne({ username: username });
           if (!user) {
-               res.status(404).json({ message: "User not found"});
+               return res.status(404).json({ message: "User not found"} );
           }
           const compare = await comparePassword(password, user!.password);
           if (!compare) {
-               res.status(400).json({ message: "Wrong password"});
+               return res.status(400).json({ message: "Wrong password" });
           }
-          res.redirect('/users'); // TODO redirect users when will be session
+          res.status(200).send(user) // TODO redirect users when will be session
      } catch (err) {
-          console.log(err); // TODO json send error
+          res.status(500).send(err);
      }
 };
 
