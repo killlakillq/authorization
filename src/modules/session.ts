@@ -9,14 +9,14 @@ const sessionStore = new MongoDBStore({
 });
 
 // Catch errors
-sessionStore.on('error', function(error: Error): void {
+sessionStore.on('error', (error: Error): void => {
      console.log(error);
 });
 
 export const sessionConfig = {
      secret: 'keyboard key',
-     cookie: { maxAge: 86400000 },
-     resave: false,
+     cookie: { maxAge: 86400000, secure: false },
+     resave: true,
      saveUninitialized: true,
      store: sessionStore
 }

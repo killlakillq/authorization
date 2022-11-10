@@ -11,16 +11,13 @@ export const signIn = async (req: Request, res: Response) => {
      }
      try {
           const user = await User.findOne({ username: username });
-          if (!user) {
-               return res.status(404).json({ message: "User not found"} );
-          }
           const compare = await comparePassword(password, user!.password);
-          if (!compare) {
-               return res.status(400).json({ message: "Wrong password" });
+          if (!user || !compare) {
+               return res.status(404).json({ message: "Wrong username or password" });
           }
-          res.status(200).send(user) // TODO redirect users when will be session
+          return res.redirect('/users');
      } catch (err) {
-          res.status(500).send(err);
+          return res.status(500).json({ message: err });
      }
 };
 

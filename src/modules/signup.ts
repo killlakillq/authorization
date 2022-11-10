@@ -7,11 +7,11 @@ export const signUp = async (req: Request, res: Response): Promise<void> => {
      const { username, password } = req.body;
      const hash = await hashedPassword(password);
      try {
-          const user = User.create({
+          await User.create({
                username: username,
                password: hash
           });
-          res.status(200).send(user);
+          return res.status(200).redirect('/login');
      } catch (err) {
           console.log(err);
      } 

@@ -1,6 +1,5 @@
 import { Request, NextFunction, Response } from 'express';
 import { check, oneOf, validationResult } from 'express-validator';
-import util from 'node:util';
 
 export const validation = [
      oneOf([

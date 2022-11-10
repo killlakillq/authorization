@@ -38,5 +38,3 @@ app.listen(PORT, async () => {
           console.log(err);
      }
 });
-
-// TODO passport session { id: string }
