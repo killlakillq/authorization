@@ -25,9 +25,3 @@ export const home = (req: Request, res: Response): void => {
      })
 }
 
-export const session = (req: Request, res: Response, next: NextFunction): void => {
-     console.log(req.session);
-     console.log(req.user);
-     next();
-     
-}

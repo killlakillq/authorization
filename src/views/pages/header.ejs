@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Home Page</title>
-</head>
 <body>
      <h1>Home Page</h1>
-     <button id="log" onclick="log()">Login</button>
-     <button id="reg" onclick="reg()">Registration</button>
+     <a href="http://localhost:3000/login">
+          <button>Login</button>
+     </a>
+     <a href="http://localhost:3000/registration">
+          <button>Registration</button>
+     </a>
+     <a href="http://localhost:3000/users">
+          <button>Users</button>
+     </a>
 </body>
-<script>
-     function reg() {
-       window.location.replace("http://localhost:3000/registration");
-     }
-     function log() {
-       window.location.replace("http://localhost:3000/login");
-     }
-     </script>
-</html>
