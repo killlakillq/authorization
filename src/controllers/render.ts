@@ -19,9 +19,11 @@ export const users = (req: Request, res: Response): void => {
      });
 };
 
-export const auth = (): void => {
-     
-};
+export const home = (req: Request, res: Response): void => {
+     res.render('index', {
+          index: '/',
+     })
+}
 
 export const session = (req: Request, res: Response, next: NextFunction): void => {
      console.log(req.session);
