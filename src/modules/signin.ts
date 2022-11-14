@@ -17,20 +17,9 @@ export const signIn = async (req: Request, res: Response) => {
           if (!user || !compare) {
                return res.status(404).json({ message: "Wrong username or password" });
           }
-          // const token = generateAccessToken(user._id, user.password);
-          // return res.json({token});
-          const token = jwt.sign(
-               { user_id: user._id, password },
-               "ASDASD",
-               {
-                 expiresIn: "2h",
-               }
-             );
-             // save user token
-          user.token = token;
           
-          res.status(201).json(user);
-          console.log(token);
+          const token = generateAccessToken(user._id, user.username);
+          return res.status(200).json({token});
 
      } catch (err) {
           return res.status(500).json({ message: err });

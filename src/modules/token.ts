@@ -1,12 +1,13 @@
-import jwt from "jsonwebtoken";
-import { Types } from "mongoose";
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
+import { NextFunction, Request, Response } from 'express';
+import user, { UserDocument } from '../database/models/user.model';
+import { Types } from 'mongoose';
 
-export const secret = process.env.SECRET!;
-
-export const generateAccessToken = (id: Types.ObjectId, password: string) => {
+export const generateAccessToken = (id: Types.ObjectId, username: string) => {
      const payload = {
           id,
-          password
+          username
      }
-     return jwt.sign(payload, secret, { expiresIn: "24h" });
+     return jwt.sign(payload, process.env.TOKEN_SECRET!, { expiresIn: '24h' });
 }
