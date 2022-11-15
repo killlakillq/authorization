@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
 // middlewares
-app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'ejs');
 app.use(session(sessionConfig));

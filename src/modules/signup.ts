@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import passport from 'passport';
 import User from '../database/models/user.model';
 import { hashedPassword } from './bcrypt';
 

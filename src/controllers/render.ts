@@ -1,5 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
-import passport from 'passport';
+import { Request, Response } from 'express';
 
 export const registration = (req: Request, res: Response): void => {
      res.render('index', {
