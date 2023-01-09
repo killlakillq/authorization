@@ -14,7 +14,7 @@ sessionStore.on('error', (error: Error): void => {
 });
 
 export const sessionConfig = {
-     secret: process.env.SESSION_SECRET,
+     secret: process.env.SESSION_SECRET!,
      cookie: { maxAge: 86400000, secure: false },
      resave: true,
      saveUninitialized: true,
