@@ -40,4 +40,3 @@ declare namespace ConnectMongoDBSession {
 		expiresAfterSeconds?: number | undefined;
 	}
 }
-

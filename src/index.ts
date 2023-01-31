@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-const express = require('express');
+import express, { Express } from 'express';
 import dotenv, { config } from 'dotenv';
-=======
-import express, { Express } from 'express';
-import dotenv from 'dotenv';
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
-=======
-import express, { Express } from 'express';
-import dotenv from 'dotenv';
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 import bodyParser from 'body-parser';
 import 'ejs';
 import path from 'node:path';
@@ -20,15 +10,7 @@ import session from 'express-session';
 import './config/passport';
 import { sessionConfig } from './modules/session';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-const app = express();
-=======
 const app: Express = express();
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
-=======
-const app: Express = express();
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 
 dotenv.config();
 // parse application/x-www-form-urlencoded
@@ -48,25 +30,10 @@ app.use(routes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
 	try {
 		await mongoose.connect(process.env.MONGO_URI!);
 		console.log(`Server is running at https://localhost:${PORT}`);
 	} catch (err) {
 		console.log(err);
 	}
-=======
-=======
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
-     try {
-          await mongoose.connect(process.env.MONGO_URI!);
-          console.log(`Server is running at https://localhost:${PORT}`);
-     } catch (err) {
-          console.log(err);
-     }
-<<<<<<< HEAD
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
-=======
->>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 });
