@@ -3,6 +3,7 @@ import { check, oneOf, validationResult } from 'express-validator';
 
 export const validation = [
 <<<<<<< HEAD
+<<<<<<< HEAD
 	oneOf([
 		check('username')
 			.exists()
@@ -25,6 +26,8 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
 
 	next();
 =======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
      oneOf([
           check('username')
                .exists()
@@ -50,5 +53,8 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
      }
 
      next();
+<<<<<<< HEAD
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 };

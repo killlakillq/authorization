@@ -4,6 +4,7 @@ import { comparePassword } from './bcrypt';
 
 export const signIn = async (req: Request, res: Response) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	const { username, password } = req.body;
 	if (!username || !password) {
 		return res.status(400).json({ message: 'Please filled the field correctly' });
@@ -19,6 +20,8 @@ export const signIn = async (req: Request, res: Response) => {
 	}
 };
 =======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
      const { username, password } = req.body;
 
      if (!username || !password) {
@@ -35,4 +38,7 @@ export const signIn = async (req: Request, res: Response) => {
      }
 };
 
+<<<<<<< HEAD
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200

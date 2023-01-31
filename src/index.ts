@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const express = require('express');
 import dotenv, { config } from 'dotenv';
+=======
+import express, { Express } from 'express';
+import dotenv from 'dotenv';
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 =======
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
@@ -16,7 +21,11 @@ import './config/passport';
 import { sessionConfig } from './modules/session';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const app = express();
+=======
+const app: Express = express();
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 =======
 const app: Express = express();
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
@@ -40,6 +49,7 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	try {
 		await mongoose.connect(process.env.MONGO_URI!);
 		console.log(`Server is running at https://localhost:${PORT}`);
@@ -47,11 +57,16 @@ app.listen(PORT, async () => {
 		console.log(err);
 	}
 =======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
      try {
           await mongoose.connect(process.env.MONGO_URI!);
           console.log(`Server is running at https://localhost:${PORT}`);
      } catch (err) {
           console.log(err);
      }
+<<<<<<< HEAD
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 });

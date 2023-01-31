@@ -1,4 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import passportLocal from 'passport-local';
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 =======
 import passportLocal from 'passport-local';
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
@@ -7,6 +11,7 @@ import { Request, Response, NextFunction } from 'express';
 import User, { UserDocument } from '../database/models/user.model';
 import { comparePassword } from '../modules/bcrypt';
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -29,6 +34,8 @@ passport.use(
 
 
 =======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 const LocalStrategy = passportLocal.Strategy;
 
 passport.use(
@@ -48,6 +55,9 @@ passport.use(
      })
 );
 
+<<<<<<< HEAD
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
      if (!req.isAuthenticated()) {

@@ -14,6 +14,7 @@ declare function ConnectMongoDBSession(fn: typeof session): typeof ConnectMongoD
 
 declare namespace ConnectMongoDBSession {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	class MongoDBStore extends session.Store {
 		constructor(connection?: MongoDBSessionOptions, callback?: (error: Error) => void);
 		client: MongoClient;
@@ -42,6 +43,8 @@ declare namespace ConnectMongoDBSession {
 	}
 }
 =======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
     class MongoDBStore extends session.Store {
         constructor(connection?: MongoDBSessionOptions, callback?: (error: Error) => void);
         client: MongoClient;
@@ -63,5 +66,9 @@ declare namespace ConnectMongoDBSession {
         expiresKey?: string | undefined;
         expiresAfterSeconds?: number | undefined;
     }
+<<<<<<< HEAD
+}
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
 }
 >>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
