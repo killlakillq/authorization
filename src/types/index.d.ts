@@ -13,6 +13,38 @@ export = ConnectMongoDBSession;
 declare function ConnectMongoDBSession(fn: typeof session): typeof ConnectMongoDBSession.MongoDBStore;
 
 declare namespace ConnectMongoDBSession {
+<<<<<<< HEAD
+<<<<<<< HEAD
+	class MongoDBStore extends session.Store {
+		constructor(connection?: MongoDBSessionOptions, callback?: (error: Error) => void);
+		client: MongoClient;
+
+		get(sid: string, callback: (err: any, session?: session.SessionData | null) => void): void;
+		set(sid: string, session: session.SessionData, callback?: (err?: any) => void): void;
+		destroy(sid: string, callback?: (err?: any) => void): void;
+		all(
+			callback: (
+				err: any,
+				obj?: session.SessionData[] | { [sid: string]: session.SessionData } | null,
+			) => void,
+		): void;
+		clear(callback?: (err?: any) => void): void;
+	}
+
+	interface MongoDBSessionOptions {
+		uri: string;
+		collection: string;
+		expires?: number | undefined;
+		databaseName?: string | undefined;
+		connectionOptions?: MongoClientOptions | undefined;
+		idField?: string | undefined;
+		expiresKey?: string | undefined;
+		expiresAfterSeconds?: number | undefined;
+	}
+}
+=======
+=======
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
     class MongoDBStore extends session.Store {
         constructor(connection?: MongoDBSessionOptions, callback?: (error: Error) => void);
         client: MongoClient;
@@ -34,4 +66,9 @@ declare namespace ConnectMongoDBSession {
         expiresKey?: string | undefined;
         expiresAfterSeconds?: number | undefined;
     }
+<<<<<<< HEAD
 }
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
+=======
+}
+>>>>>>> c4f644868aa56f3d8cb9aa60adbfe2f5f33dc200
